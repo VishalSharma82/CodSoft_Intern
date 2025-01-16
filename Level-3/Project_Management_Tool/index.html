@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .container {
+            max-width: 100%;
+            width: 90%;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .task-list {
+            margin-top: 2rem;
+        }
+        .task {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        .task button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        .task button:hover {
+            background-color: #e60000;
+        }
+        .task input[type="checkbox"] {
+            margin-right: 1rem;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .low {
+            border-left: 5px solid green;
+        }
+        .medium {
+            border-left: 5px solid orange;
+        }
+        .high {
+            border-left: 5px solid red;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+        form input, form select {
+            flex: 1 1 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            flex: 1 1 100%;
+        }
+        form button:hover {
+            background-color: #218838;
+        }
+        #search-input {
+            padding: 0.8rem;
+            width: 98%;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .task-due {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (min-width: 768px) {
+            .container {
+                width: 80%;
+            }
+            .task-list {
+                display: flex;
+                flex-direction: column;
+            }
+            form input, form select, form button {
+                flex: 1;
+                width: auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Management Tool</h1>
+    </header>
+    <div class="container">
+        <input type="text" id="search-input" placeholder="Search tasks...">
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter a task..." required>
+            <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <input type="date" id="task-due" required>
+            <select id="task-category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="urgent">Urgent</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <div class="task-list" id="task-list">
+            <!-- Task items will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const taskForm = document.getElementById('task-form');
+        const taskInput = document.getElementById('task-input');
+        const taskList = document.getElementById('task-list');
+        const searchInput = document.getElementById('search-input');
+        const taskDue = document.getElementById('task-due');
+        const taskCategory = document.getElementById('task-category');
+        const taskPriority = document.getElementById('task-priority');
+
+        // Save tasks to localStorage
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll('.task').forEach(task => {
+                tasks.push({
+                    text: task.querySelector('.task-text').textContent,
+                    priority: task.classList.contains('low') ? 'low' : task.classList.contains('medium') ? 'medium' : 'high',
+                    category: task.dataset.category,
+                    dueDate: task.dataset.dueDate,
+                    completed: task.querySelector('.task-text').classList.contains('completed')
+                });
+            });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Load tasks from localStorage
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => {
+                addTaskToDOM(task.text, task.priority, task.category, task.dueDate, task.completed);
+            });
+        }
+
+        // Add task to DOM
+        function addTaskToDOM(taskText, priority = 'low', category = 'work', dueDate = '', completed = false) {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task', priority); // Apply priority class
+            taskDiv.dataset.category = category;
+            taskDiv.dataset.dueDate = dueDate;
+
+            const taskContent = document.createElement('span');
+            taskContent.classList.add('task-text');
+            taskContent.textContent = taskText;
+            if (completed) taskContent.classList.add('completed');
+
+            const taskCheckbox = document.createElement('input');
+            taskCheckbox.type = 'checkbox';
+            taskCheckbox.checked = completed;
+            taskCheckbox.addEventListener('change', function() {
+                taskContent.classList.toggle('completed');
+                saveTasks();
+            });
+
+            const taskDueText = document.createElement('span');
+            taskDueText.classList.add('task-due');
+            if (dueDate) {
+                const dueDateObj = new Date(dueDate);
+                taskDueText.textContent = `Due: ${dueDateObj.toLocaleDateString()}`;
+            }
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.addEventListener('click', function() {
+                const newTaskText = prompt('Edit task:', taskContent.textContent);
+                if (newTaskText) {
+                    taskContent.textContent = newTaskText;
+                    saveTasks();
+                }
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', function() {
+                taskList.removeChild(taskDiv);
+                saveTasks();
+            });
+
+            taskDiv.appendChild(taskCheckbox);
+            taskDiv.appendChild(taskContent);
+            taskDiv.appendChild(taskDueText);
+            taskDiv.appendChild(editButton);
+            taskDiv.appendChild(deleteButton);
+
+            taskList.appendChild(taskDiv);
+        }
+
+        // Handle form submit
+        taskForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const taskText = taskInput.value;
+            const priority = taskPriority.value;
+            const category = taskCategory.value;
+            const dueDate = taskDue.value;
+            addTaskToDOM(taskText, priority, category, dueDate);
+            saveTasks();
+            taskInput.value = '';
+            taskDue.value = '';
+        });
+
+        // Search/filter tasks
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const tasks = document.querySelectorAll('.task');
+            tasks.forEach(task => {
+                const taskText = task.querySelector('.task-text').textContent.toLowerCase();
+                const taskPriority = task.classList.contains('low') ? 'low' : task.classList.contains('medium') ? 'medium' : 'high';
+                const taskCategory = task.dataset.category;
+                if (taskText.includes(query) || taskPriority.includes(query) || taskCategory.includes(query)) {
+                    task.style.display = 'flex';
+                } else {
+                    task.style.display = 'none';
+                }
+            });
+        });
+
+        // Load tasks on page load
+        loadTasks();
+    </script>
+</body>
+</html>

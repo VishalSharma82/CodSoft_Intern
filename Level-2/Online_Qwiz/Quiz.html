@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Quiz</title>
+  <link rel="stylesheet" href="Quiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="question-header">
+      <p>Question <span id="current-question">1</span>/20</p>
+    </div>
+    <div class="question-box">
+      <h3 id="question-text">Loading question...</h3>
+      <div class="options">
+        <button class="option" data-value="A">Option A</button>
+        <button class="option" data-value="B">Option B</button>
+        <button class="option" data-value="C">Option C</button>
+        <button class="option" data-value="D">Option D</button>
+      </div>
+    </div>
+    <button id="new-quiz-btn" style="display: none;">Refresh Questions</button>
+  </div>
+  <script src="Quiz.js"></script>
+</body>
+</html>

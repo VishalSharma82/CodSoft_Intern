@@ -1,0 +1,129 @@
+
+/* this is css code  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    background-color: rgba(211, 211, 211, 0.4);
+    padding: 20px;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#result {
+    width: 100%;
+    padding: 15px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) inset;
+    text-align: right;
+    background: white;
+}
+
+.btns, .advanced-btns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    margin-top: 10px;
+}
+
+.advanced-btns {
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 24px;
+}
+
+.calculator .advanced-btns{
+    /* background-color: rgba(211, 211, 211, 0.4); */
+    padding: 10px;
+    /* max-width: 700px; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
+    /* align-items: center; */
+    /* text-size-adjust: none; */
+    justify-content: center;
+}
+
+button {
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+    background: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ddd;
+    color: #333;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #ccc;
+    transform: scale(1);
+}
+
+.clear, .delete {
+    background-color: red;
+    color: white;
+}
+
+.operator {
+    background-color: #ff9500;
+    color: white;
+}
+
+.Advanced-btns{
+    background-color: #007aff;
+    color: white;
+}
+
+.equal {
+    background-color: #4cd964;
+    color: white;
+}
+
+.advanced-btns button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+.advanced-btns .operator{
+    background-color: #ff9500;
+    /* color: #007aff; */
+}
+.advanced-btns .clear{
+    background-color: red;
+}
+.advanced-btns .delete{
+    background-color: red;
+}
+.advanced-btns button:hover {
+    background-color: #ddd;
+    color: #333;
+    transform: scale(1.05);
+}
+.advanced-btns .equal{
+    background-color: #ffffff;
+}
+.advanced-btns .Advanced-btns{
+    background-color: #007aff;
+}
+.advanced-btns .function{
+    background-color: #4bb7e9;
+}
