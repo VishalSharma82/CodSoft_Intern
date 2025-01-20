@@ -26,12 +26,12 @@
     <section id="chefs-specials" class="animate__animated animate__fadeIn">
         <h2>Chef's Specials</h2>
         <div class="specials-item card-hover">
-            <img src="https://via.placeholder.com/500x300" alt="Special Dish 1">
+            <img src="images/SpecialDish1.jpeg" alt="Special Dish 1">
             <h3>Slow-Roasted Pork Belly</h3>
             <p>A tender and flavorful cut, slow-cooked to perfection and paired with seasonal vegetables.</p>
         </div>
         <div class="specials-item card-hover">
-            <img src="https://via.placeholder.com/500x300" alt="Special Dish 2">
+            <img src="images/SpecialDish2.webp" alt="Special Dish 2">
             <h3>Wild Mushroom Risotto</h3>
             <p>A creamy risotto made with a variety of wild mushrooms, paired with a glass of red wine.</p>
         </div>
@@ -80,41 +80,56 @@
     <section id="blog" class="animate__animated animate__fadeIn">
         <h2>From Our Blog</h2>
         <div class="blog-post card-hover">
-            <img src="https://via.placeholder.com/500x300" alt="Blog Post 1">
+            <img src="images/BlogPost1.webp" alt="Blog Post 1">
             <h3>The Art of Wine Pairing: A Guide</h3>
             <p>Discover the nuances of wine pairing and how to enhance your dining experience with the perfect bottle of wine.</p>
             <a href="#" class="btn">Read More</a>
         </div>
         <div class="blog-post card-hover">
-            <img src="https://via.placeholder.com/500x300" alt="Blog Post 2">
+            <img src="images/BlogPost2.webp" alt="Blog Post 2">
             <h3>Seasonal Ingredients at Gramercy Tavern</h3>
             <p>Learn about the locally sourced ingredients that make our menu so special, and why we focus on sustainability.</p>
             <a href="#" class="btn">Read More</a>
         </div>
     </section>
 
-    <!-- Reservation Section -->
-    <section id="reservation" class="animate__animated animate__fadeInUp">
-        <h2>Make a Reservation</h2>
-        <form id="reservation-form">
+<!-- Reservation Section -->
+<section id="reservation" class="animate__animated animate__fadeInUp">
+    <h2>Make a Reservation</h2>
+    <form id="reservation-form" novalidate>
+        <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
             <label for="time">Time:</label>
             <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
             <label for="guests">Guests:</label>
-            <input type="number" id="guests" name="guests" min="1" required>
-            <button type="submit" class="btn">Reserve Now</button>
-        </form>
-        <div id="form-message"></div>
-    </section>
+            <input type="number" id="guests" name="guests" min="1" placeholder="Number of guests" required>
+        </div>
+        <button type="submit" class="btn">Reserve Now</button>
+    </form>
+    <div id="form-message" aria-live="polite"></div>
+</section>
+<section id="reservation-history">
+    <!-- Reservation history will be displayed here -->
+</section>
+
 
     <!-- Gallery Section -->
     <section id="gallery" class="animate__animated animate__fadeIn">
         <h2>Gallery</h2>
         <div class="gallery-images">
-            <img src="https://via.placeholder.com/300x200" alt="Restaurant Interior">
-            <img src="https://via.placeholder.com/300x200" alt="Dining Experience">
-            <img src="https://via.placeholder.com/300x200" alt="Exquisite Dishes">
+            <img src="images/GT1.jpeg" alt="Restaurant Interior">
+            <img src="images/GT2.jpeg" alt="Dining Experience">
+            <img src="images/GT3.jpeg" alt="Exquisite Dishes">
+            <img src="images/GT4.jpeg" alt="Exquisite Dishes">
+            <img src="images/GT5.jpeg" alt="Exquisite Dishes">
+            <img src="images/GT6.jpeg" alt="Exquisite Dishes">
+            <img src="images/GT7.jpeg" alt="Exquisite Dishes">
+            <img src="images/GT8.jpeg" alt="Exquisite Dishes">
         </div>
     </section>
 

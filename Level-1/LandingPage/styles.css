@@ -36,7 +36,7 @@ a {
 
 /* Hero Section */
 #hero {
-    background: url('https://via.placeholder.com/1200x800') no-repeat center center/cover;
+    background: url('images/wallpaper2.webp') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -313,5 +313,113 @@ footer a {
 
     .hero-content p {
         font-size: 1.2rem;
+    }
+}
+
+/* Root variables for consistent styling */
+:root {
+    --primary-color: #4CAF50; /* Change to your brand's primary color */
+    --secondary-color: #333;
+    --background-color: #f9f9f9;
+    --button-color: #ffffff;
+    --button-hover-color: #45a049;
+    --font-family: 'Arial', sans-serif;
+    --font-size: 16px;
+    --input-border-color: #ccc;
+    --input-focus-color: #4CAF50;
+    --form-message-color: #d9534f;
+}
+/* Reservation Section Styling */
+#reservation {
+    background-color: var(--background-color, #ffffff);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+#reservation h2 {
+    font-family: var(--font-family, 'Arial', sans-serif);
+    color: var(--primary-color, #4CAF50);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: var(--secondary-color, #333);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid var(--input-border-color, #ccc);
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--focus-color, #4CAF50);
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Button Styling */
+.btn {
+    background-color: var(--button-bg, #4CAF50);
+    color: var(--button-color, #fff);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--button-hover-bg, #45a049);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Form Message Styling */
+#form-message {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Accessibility */
+[aria-live="polite"] {
+    color: var(--message-color, #333);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #reservation {
+        padding: 1.5rem;
+    }
+
+    #reservation h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input,
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem;
     }
 }

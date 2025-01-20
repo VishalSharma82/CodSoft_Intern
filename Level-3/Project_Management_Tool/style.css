@@ -1,0 +1,124 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.container {
+  max-width: 100%;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.task-list {
+  margin-top: 2rem;
+}
+.task {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+.task button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+.task button:hover {
+  background-color: #e60000;
+}
+.task input[type="checkbox"] {
+  margin-right: 1rem;
+}
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+.low {
+  border-left: 5px solid green;
+}
+.medium {
+  border-left: 5px solid orange;
+}
+.high {
+  border-left: 5px solid red;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+form input,
+form select {
+  flex: 1 1 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  flex: 1 1 100%;
+}
+form button:hover {
+  background-color: #218838;
+}
+#search-input {
+  padding: 0.8rem;
+  width: 98%;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.task-due {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
+  .task-list {
+    display: flex;
+    flex-direction: column;
+  }
+  form input,
+  form select,
+  form button {
+    flex: 1;
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 70%;
+  }
+}
