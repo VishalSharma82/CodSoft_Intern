@@ -127,3 +127,72 @@ button:active {
 .advanced-btns .function{
     background-color: #4bb7e9;
 }
+/* Media Queries for Responsive Layout */
+
+/* For extra small devices (mobile portrait - up to 380px) */
+@media (max-width: 380px){
+    .calculator {
+        width: 90%; /* Ensure it fits narrow screens */
+        padding: 15px;
+        max-width: 300px;
+    }
+
+    #result {
+        font-size: 20px;
+        height: 45px;
+    }
+
+    .btns, .advanced-btns {
+        grid-template-columns: repeat(3, 1fr); /* Stack buttons in 3 columns */
+        grid-gap: 5px; /* Adjust gap for small screens */
+    }
+}
+
+/* For small devices (mobile landscape - 381px to 600px) */
+@media (max-width: 381px){
+    #result {
+        font-size: 22px;
+        height: 50px;
+    }
+
+    .btns, .advanced-btns {
+        grid-template-columns: repeat(4, 1fr); /* Maintain 4 columns */
+    }
+}
+
+/* For tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px){
+    .calculator {
+        width: 70%; /* Adjust width for tablet screens */
+        padding: 25px;
+        max-width: 500px;
+    }
+
+    #result {
+        font-size: 24px;
+        height: 55px;
+    }
+
+    .btns, .advanced-btns {
+        grid-template-columns: repeat(4, 1fr); /* Maintain grid for tablets */
+    }
+}
+
+/* For desktops (1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px){
+    .calculator {
+        width: 50%; /* Center and resize for desktops */
+        padding: 30px;
+        max-width: 600px;
+    }
+
+    #result {
+        font-size: 24px;
+        height: 60px;
+    }
+
+    .btns, .advanced-btns {
+        grid-template-columns: repeat(4, 1fr); /* Maintain 4-column grid */
+    }
+}
+

@@ -8,7 +8,7 @@
   scroll-behavior: smooth;
 }
 
-:root {
+:root{
   --bg-color: #ffffff;
   --text-color: #000;
   --second-color: #f75023;
@@ -22,6 +22,7 @@ body {
   color: var(--text-color);
 }
 
+/* Header Styles */
 header {
   position: fixed;
   width: 100%;
@@ -35,6 +36,12 @@ header {
   padding: 1px 18px;
   transition: 0.3s;
   height: 8vh;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header.sticky{
+  background: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .logo img {
@@ -43,22 +50,41 @@ header {
   height: auto;
 }
 
+/* Navlist Default Styles */
 .navlist {
-  display: flex;
+  display: none; /* Hidden by default on smaller screens */
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navlist.active{
+  display: flex; /* Make visible on toggle */
+  flex-direction: row; /* Align items in a row */
+  justify-content: center;
 }
 
 .navlist li {
-  position: relative;
+  margin: 0 10px;
 }
 
 .navlist a {
   font-size: var(--p-font);
   color: var(--text-color);
   font-weight: 500;
-  padding: 10px 27px;
-  /* z-index: 10001;
-    cursor: pointer;
-    display: flex; */
+  padding: 10px 15px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.navlist a:hover {
+  color: var(--second-color);
 }
 
 .navlist a::after {
@@ -66,7 +92,7 @@ header {
   position: absolute;
   width: 0%;
   height: 2px;
-  background: orange;
+  background: var(--second-color);
   bottom: -3px;
   left: 0;
   transition: ease 0.4s;
@@ -76,19 +102,21 @@ header {
   width: 100%;
 }
 
+/* Menu Icon */
 #menu-icon {
   font-size: 35px;
   color: var(--text-color);
-  z-index: 10001;
+  z-index: 1001;
   cursor: pointer;
-  display: none;
+  display: none; /* Hidden on larger screens */
 }
 
+/* Button Styles */
 .top-btn {
   display: inline-block;
   padding: 9px 30px;
   background: transparent;
-  border: 2px solid orange;
+  border: 2px solid var(--second-color);
   border-radius: 30px;
   color: var(--text-color);
   letter-spacing: 1px;
@@ -99,9 +127,65 @@ header {
 
 .top-btn:hover {
   transform: scale(1.1);
-  background: orange;
-  border: 2px solid orange;
+  background: var(--second-color);
+  border: 2px solid var(--second-color);
   color: var(--bg-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 970px) {
+  #menu-icon {
+    display: block; /* Show menu icon on smaller screens */
+  }
+
+  .navlist {
+    display: none; /* Hide navlist by default */
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navlist.active {
+    display: flex; /* Show navlist when menu is active */
+    flex-direction: row; /* Align items in a row */
+    justify-content: center;
+  }
+
+  .navlist li {
+    margin: 10px 0;
+  }
+
+  .navlist a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+
+  .navlist a:hover {
+    background: var(--bg-color);
+    color: var(--second-color);
+  }
+}
+
+@media (min-width: 970px) {
+  .navlist {
+    display: flex !important; /* Always show navlist on larger screens */
+    flex-direction: row;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  #menu-icon {
+    display: none; /* Hide menu icon on larger screens */
+  }
 }
 
 section {
@@ -197,7 +281,7 @@ span {
   height: auto;
 }
 
-header.sticky {
+header.sticky{
   background: white;
   padding: 1px 18px;
   box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
@@ -317,6 +401,7 @@ sub-img img {
   margin-top: 5rem;
   text-align: center;
   cursor: pointer;
+
 }
 
 .col {
@@ -343,7 +428,9 @@ sub-img img {
 }
 
 .layer:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, #191919);
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%,rgb(99, 50, 231));
+  max-width: 380px ;
+  align-items:center;
 }
 
 .layer h3 {
@@ -612,10 +699,6 @@ sub-img img {
   .navlist a::after {
     display: none;
   }
-
-  .navlist.active {
-    top: 100px;
-  }
 }
 
 @media (max-width: 800px) {
@@ -665,3 +748,425 @@ sub-img img {
   }
 }
 /* completed  */
+/* Additional Responsive CSS */
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .home {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about {
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+  }
+  .items, .service-content, .Project-content {
+    grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  }
+  .contact {
+    padding: 50px;
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .logo img {
+    width: 100px;
+  }
+  .home {
+    min-height: 120vh;
+  }
+  .home-text h1 {
+    font-size: 2.5rem;
+  }
+  .home-img img {
+    width: 300px;
+  }
+  .social a {
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .top-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* For screens smaller than 480px */
+@media (max-width: 480px) {
+  .navlist {
+    padding: 10px;
+  }
+  .navlist a {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  .home-text h1 {
+    font-size: 2rem;
+  }
+  .home-text p {
+    font-size: 0.9rem;
+    line-height: 22px;
+  }
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+  .contact {
+    width: 90%;
+    padding: 40px;
+  }
+  .contact h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* For screens smaller than 360px */
+@media (max-width: 360px) {
+  .home-text h1 {
+    font-size: 1.8rem;
+  }
+  .home-img img {
+    width: 260px;
+  }
+  .btn, .top-btn {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+  .social a {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 495px) {
+  /* General Styles */
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensure full width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 5%;
+    height: auto;
+    text-align: center;
+  }
+
+  .logo img {
+    max-width: 100px; /* Adjust logo size */
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .navlist {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    background: #ffffff;
+    width: 100%; /* Full width of the viewport */
+    padding: 10px 0;
+  }
+
+  .navlist.active {
+    display: flex; /* Show on toggle */
+  }
+
+  /* Home Section */
+  .home {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 5%;
+    margin: 0 auto;
+  }
+
+  .home-text h1 {
+    font-size: 2rem;
+  }
+
+  .home-img img {
+    width: 100%;
+    max-width: 250px; /* Limit image size */
+    height: auto;
+    margin: 20px auto;
+  }
+
+  /* About Section */
+  .about {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 5%;
+  }
+
+  .about-img img {
+    width: 100%;
+    max-width: 220px;
+    margin: 10px auto;
+  }
+
+  /* Service, Projects, and Portfolio */
+  .items,
+  .service-content,
+  .Project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 20px 5%;
+  }
+
+  .sub-box {
+    text-align: center;
+  }
+
+  /* Contact Section */
+  .contact {
+    width: 100%;
+    padding: 20px 5%;
+    text-align: center;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .contact button {
+    width: auto;
+    padding: 10px 20px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* General Image and Text Styling */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 315px) {
+  /* General Fixes */
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensure the body takes full width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  * {
+    box-sizing: border-box; /* Include padding and border in element width */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 5%;
+    height: auto;
+    text-align: center;
+  }
+
+  .logo img {
+    max-width: 70px; /* Smaller logo */
+    height: auto;
+    margin: 5px auto;
+  }
+
+  .navlist {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    background: #ffffff;
+    width: 100%; /* Full width of the viewport */
+    padding: 8px 0;
+  }
+
+  .navlist.active {
+    display: flex; /* Show on toggle */
+  }
+
+  /* Home Section */
+  .home {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 5%;
+    margin: 0 auto;
+  }
+
+  .home-text h1 {
+    font-size: 1.6rem; /* Smaller heading */
+    word-wrap: break-word; /* Prevent overflowing text */
+  }
+
+  .home-img img {
+    width: 100%;
+    max-width: 180px; /* Smaller image for smaller screens */
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .btn {
+    margin: 15px auto;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* About Section */
+  .about {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 5%;
+  }
+
+  .about-img img {
+    width: 100%;
+    max-width: 160px; /* Smaller image */
+    margin: 10px auto;
+  }
+
+  .about-text h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+
+  .about-text p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+
+  /* Service, Projects, and Portfolio */
+  .items,
+  .service-content,
+  .Project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 10px 5%;
+  }
+
+  .sub-box {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .sub-box h3 {
+    font-size: 1rem;
+  }
+
+  .sub-box p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* Contact Section */
+  .contact {
+    width: 100%;
+    padding: 10px 5%;
+    text-align: center;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+  }
+
+  .contact button {
+    width: auto;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Text Adjustments */
+  p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-wrap: break-word; /* Prevent long words from overflowing */
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Fix for Horizontal Scrolling Caused by Sections */
+  section {
+    width: 100%; /* Full width of the viewport */
+    margin: 0 auto;
+    padding: 15px 5%; /* Adjust padding for small screens */
+  }
+
+  /* Grid and Flex Adjustments */
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%; /* Prevent grid from exceeding the container */
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensure flex containers fit within the viewport */
+  }
+}

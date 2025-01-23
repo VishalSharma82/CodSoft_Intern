@@ -8,7 +8,7 @@
 body {
     font-family: 'Arial', sans-serif;
     color: #333;
-    background-color: #fafafa;
+    background-color: #fffaf0;
 }
 
 h1, h2, h3 {
@@ -22,7 +22,7 @@ a {
 }
 
 .btn {
-    background-color: #ff5c5c;
+    background-color: #ff5722;
     padding: 12px 30px;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -30,8 +30,13 @@ a {
 }
 
 .btn:hover {
-    background-color: #e04a4a;
+    background-color:rgb(38, 172, 120);
     transform: scale(1.1);
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
 }
 
 /* Hero Section */
@@ -58,7 +63,7 @@ a {
 /* About Section */
 #about {
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: #fffaf0;
     text-align: center;
     color: #333;
 }
@@ -80,24 +85,38 @@ a {
 /* Chef's Specials Section */
 #chefs-specials {
     padding: 60px 20px;
-    background-color: #f4f4f4;
+    background-color: #fffaf0;
     text-align: center;
 }
 
+.cs,.sfm{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color: #fffaf0;
+}
 #chefs-specials h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #333;
 }
 
+#chefs-specials{
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    justify-content: space-between; /* Space between items for larger screens */
+    gap: 20px; /* Adds spacing between cards */
+}
+
+/* Specials Item Card */
 .specials-item {
-    display: inline-block;
-    width: 45%;
-    margin: 20px 2.5%;
+    flex: 0 1 calc(48% - 20px); /* Two items per row on larger screens */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%; /* Ensures responsiveness */
+    max-width: 100%;
 }
 
 .specials-item:hover {
@@ -107,19 +126,54 @@ a {
 
 .specials-item img {
     width: 100%;
-    height: auto;
+    height: 55vh;
 }
 
 .specials-item h3 {
     font-size: 1.8rem;
     margin-top: 10px;
     color: #333;
+    text-align: center;
 }
+
+/* For mobile view */
+@media (max-width: 767px){
+    #chefs-specials{
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: center; /* Center the stacked items */
+    }
+
+    .specials-item {
+        flex: 0 1 100%; /* Full width for mobile view */
+        max-width: 100%; /* Ensure it doesn't exceed container width */
+    }
+}
+
+/* For tablet screens */
+@media (min-width: 768px) and (max-width: 1024px){
+    .specials-item {
+        flex: 0 1 calc(48% - 10px); /* Adjust size for tablets */
+    }
+}
+
+/* For desktops (large screens) */
+@media (min-width: 2000px){
+    #chefs-specials{
+        flex-direction: row; /* Ensure items are aligned in a row */
+        justify-content: space-between; /* Space between items for desktops */
+    }
+
+    .specials-item {
+        flex: 0 1 calc(48% - 20px); /* Two items per row for desktops */
+    }
+}
+
+
 
 /* Testimonials Section */
 #testimonials {
     padding: 60px 20px;
-    background-color: #fff;
+    background-color:#fffaf0;
     text-align: center;
 }
 
@@ -148,7 +202,7 @@ a {
 /* Events & Offers Section */
 #events {
     padding: 60px 20px;
-    background-color: #ffebf0;
+    background-color:#fffaf0;
     text-align: center;
 }
 
@@ -171,7 +225,7 @@ a {
 /* Newsletter Signup Section */
 #newsletter {
     padding: 60px 20px;
-    background-color: #f4f4f4;
+    background-color: #fffaf0;
     text-align: center;
 }
 
@@ -197,16 +251,28 @@ a {
 #newsletter form button {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #ff5c5c;
+    background-color:#ff5722;
     border-radius: 5px;
     color: white;
 }
-
 /* Blog Section */
 #blog {
-    padding: 60px 20px;
-    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    background-color: #fffaf0;
     text-align: center;
+    margin: 2px;
+    padding: 2px 2px 4px 2px;
+    justify-content: space-between; /* Space between blog posts */
+    gap: 20px; /* Add spacing between cards */
+}
+
+.fob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    background-color:#fffaf0;
 }
 
 #blog h2 {
@@ -215,32 +281,82 @@ a {
     color: #333;
 }
 
+/* Blog Post */
 .blog-post {
-    margin-bottom: 40px;
+    flex: 0 1 calc(48% - 20px); /* Two items per row for larger screens */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color:#fffaf0;
 }
 
 .blog-post:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .blog-post img {
     width: 100%;
-    height: auto;
+    height: 55vh;
     border-radius: 8px;
 }
 
 .blog-post h3 {
     font-size: 1.8rem;
-    margin-top: 10px;
+    margin: 10px 0;
     color: #333;
 }
+
+/* For mobile view */
+@media (max-width: 767px) {
+    #blog {
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: center; /* Center items */
+    }
+
+    .blog-post {
+        flex: 0 1 100%; /* Full width for mobile view */
+        max-width: 100%; /* Ensure it doesn't exceed container width */
+    }
+}
+
+/* For tablet screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .blog-post {
+        flex: 0 1 calc(48% - 10px); /* Two items per row with smaller gap for tablets */
+    }
+}
+
+/* For desktops (large screens) */
+@media (min-width: 1025px) {
+    #blog {
+        flex-direction: row; /* Items in a row */
+        justify-content: space-between; /* Space between items */
+    }
+
+    .blog-post {
+        flex: 0 1 calc(48% - 20px); /* Two items per row for desktops */
+    }
+}
+
+/* For extra-large screens */
+@media (min-width: 2000px) {
+    #blog {
+        justify-content: space-evenly; /* Evenly distribute items for extra-large screens */
+    }
+
+    .blog-post {
+        flex: 0 1 calc(48% - 10px); /* Ensure proper spacing */
+    }
+}
+
+
 
 /* Gallery Section */
 #gallery {
     padding: 60px 20px;
-    background-color: #f4f4f4;
+    background-color: #fffaf0;
     text-align: center;
 }
 
@@ -252,8 +368,9 @@ a {
 
 .gallery-images {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .gallery-images img {
@@ -279,59 +396,9 @@ footer a {
     color: #ff5c5c;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .gallery-images {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .gallery-images img {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    #chefs-specials .specials-item {
-        width: 100%;
-    }
-
-    #newsletter form {
-        width: 80%;
-    }
-
-    .event, .testimonial, .blog-post {
-        width: 100%;
-    }
-
-    #hero {
-        height: 80vh;
-    }
-
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
-    }
-}
-
-/* Root variables for consistent styling */
-:root {
-    --primary-color: #4CAF50; /* Change to your brand's primary color */
-    --secondary-color: #333;
-    --background-color: #f9f9f9;
-    --button-color: #ffffff;
-    --button-hover-color: #45a049;
-    --font-family: 'Arial', sans-serif;
-    --font-size: 16px;
-    --input-border-color: #ccc;
-    --input-focus-color: #4CAF50;
-    --form-message-color: #d9534f;
-}
 /* Reservation Section Styling */
 #reservation {
-    background-color: var(--background-color, #ffffff);
+    background-color:#fffaf0;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -341,8 +408,7 @@ footer a {
 }
 
 #reservation h2 {
-    font-family: var(--font-family, 'Arial', sans-serif);
-    color: var(--primary-color, #4CAF50);
+    color: #4CAF50;
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
@@ -353,73 +419,166 @@ footer a {
     text-align: left;
 }
 
-.form-group label {
-    font-size: 1rem;
-    color: var(--secondary-color, #333);
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
 .form-group input {
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
-    border: 1px solid var(--input-border-color, #ccc);
+    border: 1px solid #ccc;
     border-radius: 4px;
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus {
-    border-color: var(--focus-color, #4CAF50);
-    outline: none;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
-}
-
-/* Button Styling */
-.btn {
-    background-color: var(--button-bg, #4CAF50);
-    color: var(--button-color, #fff);
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn:hover {
-    background-color: var(--button-hover-bg, #45a049);
-    transform: translateY(-2px);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-/* Form Message Styling */
-#form-message {
-    margin-top: 1.5rem;
-    font-size: 1rem;
+    border-color: #4CAF50;
 }
 
 /* Accessibility */
-[aria-live="polite"] {
-    color: var(--message-color, #333);
+[aria-live="polite"]{
+    color: #333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Full Responsiveness */
+
+/* For screens larger than 767px */
+@media (min-width: 768px){
+    .gallery-images {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #newsletter {
+        padding: 50px;
+    }
+}
+
+/* For small devices */
+@media only screen and (max-width: 767px){
+    #about {
+        padding: 60px 10px;
+    }
+}
+/* Media Query for 380px and below */
+@media (max-width: 380px) {
+
+    /* General Styles */
+    body {
+        font-size: 14px; /* Reduce overall font size */
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem; /* Smaller headings */
+    }
+
+    .btn {
+        padding: 10px 20px; /* Smaller buttons */
+        font-size: 1rem; /* Reduce button font size */
+    }
+
+    /* Hero Section */
+    #hero {
+        height: auto; /* Allow height to adjust to content */
+        padding: 20px 10px;
+        background-size: cover; /* Ensure background scales well */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Smaller main heading */
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    /* About Section */
+    #about {
+        padding: 40px 10px; /* Reduce padding for smaller screens */
+    }
+
+    #about p {
+        font-size: 1rem; /* Adjust paragraph size */
+        line-height: 1.4;
+    }
+
+    /* Chef's Specials Section */
+    #chefs-specials {
+        padding: 40px 10px;
+    }
+
+    .specials-item {
+        flex: 0 1 100%; /* Stack items vertically */
+        margin-bottom: 20px; /* Add spacing between items */
+    }
+
+    .specials-item img {
+        height: auto; /* Ensure images scale correctly */
+    }
+
+    /* Blog Section */
+    #blog {
+        padding: 40px 10px;
+    }
+
+    .blog-post {
+        flex: 0 1 100%; /* Stack items vertically */
+        margin-bottom: 20px; /* Add spacing between posts */
+    }
+
+    .blog-post img {
+        height: auto; /* Ensure images scale */
+    }
+
+    /* Testimonials Section */
+    #testimonials {
+        padding: 40px 10px;
+    }
+
+    .testimonial {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    /* Events Section */
+    #events {
+        padding: 40px 10px;
+    }
+
+    .event {
+        font-size: 1rem; /* Adjust font size for events */
+    }
+
+    /* Newsletter Section */
+    #newsletter form {
+        width: 100%; /* Make form full width */
+    }
+
+    #newsletter form input {
+        width: 100%; /* Full width inputs */
+        margin-bottom: 10px; /* Add spacing between input and button */
+    }
+
+    #newsletter form button {
+        width: 100%; /* Full width button */
+    }
+
+    /* Gallery Section */
+    .gallery-images img {
+        width: 100%; /* Images take full width */
+        margin-bottom: 10px; /* Add spacing between images */
+    }
+
+    /* Reservation Section */
     #reservation {
         padding: 1.5rem;
     }
 
-    #reservation h2 {
-        font-size: 1.5rem;
+    .form-group input {
+        font-size: 0.9rem; /* Smaller input font size */
     }
 
-    .form-group input,
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.7rem;
+    /* Footer Section */
+    footer {
+        font-size: 0.9rem; /* Reduce font size for footer */
+    }
+
+    footer a {
+        font-size: 0.9rem; /* Adjust link size */
     }
 }
